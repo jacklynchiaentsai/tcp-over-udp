@@ -1,0 +1,226 @@
+# tcpclient.py
+$ python3 tcpclient.py tfidf_snippet.png 127.0.0.1 2222 500 1234
+< TCP connection established >
+< TCP Connection Closed >
+
+# tcpserver.py
+$ python3 tcpserver.py testpic.png 4444 127.0.0.1 1234
+< TCP connection established >
+< TCP Connection Closed >
+
+# newudpl 
+$ python3 tcpclient.py tfidf_snippet.png 127.0.0.1 2222 500 1234
+Network emulator with UDP link
+ Copyright (c) 2021 by Columbia University; all rights reserved
+
+Link established:
+  localhost(127.0.0.1)/1234 ->
+          DESKTOP-9I165B1(127.0.1.1)/2222
+  /3333 ->
+          localhost(127.0.0.1)/4444
+
+emulating speed  : 1000 kb/s
+delay            : 0.000000 sec
+Ethernet         : 10 Mb/s
+Queue buffersize : 8192 bytes
+
+error rate
+    Random packet loss: 15%
+    Bit error         : 0 (1/100000 per bit)
+    Out of order      : 0%
+    Jitter            : 0% of delay
+
+received: recv counter: 0  size: 20 bytes
+  this is the first packet:
+Packet loss:
+  discarded packet: send counter: 0  size: 20 bytes
+received: recv counter: 20  size: 20 bytes
+send    : send counter: 0  size: 20 bytes
+received: recv counter: 40  size: 20 bytes
+send    : send counter: 20  size: 20 bytes
+received: recv counter: 60  size: 2020 bytes
+received: recv counter: 2080  size: 2020 bytes
+received: recv counter: 4100  size: 2020 bytes
+received: recv counter: 6120  size: 2020 bytes
+received: recv counter: 8140  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8140  size: 2020 bytes
+received: recv counter: 8140  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8140  size: 2020 bytes
+received: recv counter: 8140  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8140  size: 2020 bytes
+received: recv counter: 8140  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8140  size: 2020 bytes
+received: recv counter: 8140  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8140  size: 2020 bytes
+received: recv counter: 8140  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8140  size: 2020 bytes
+received: recv counter: 8140  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8140  size: 2020 bytes
+received: recv counter: 8140  size: 1571 bytes
+!Congestion:
+  discarded packet: recv counter: 8140  size: 1571 bytes
+send    : send counter: 40  size: 2020 bytes
+send    : send counter: 2060  size: 2020 bytes
+send    : send counter: 4080  size: 2020 bytes
+send    : send counter: 6100  size: 2020 bytes
+received: recv counter: 8140  size: 2020 bytes
+send    : send counter: 8120  size: 2020 bytes
+received: recv counter: 10160  size: 2020 bytes
+send    : send counter: 10140  size: 2020 bytes
+received: recv counter: 12180  size: 2020 bytes
+send    : send counter: 12160  size: 2020 bytes
+received: recv counter: 14200  size: 2020 bytes
+send    : send counter: 14180  size: 2020 bytes
+received: recv counter: 16220  size: 2020 bytes
+send    : send counter: 16200  size: 2020 bytes
+received: recv counter: 18240  size: 2020 bytes
+send    : send counter: 18220  size: 2020 bytes
+received: recv counter: 20260  size: 2020 bytes
+send    : send counter: 20240  size: 2020 bytes
+received: recv counter: 22280  size: 1571 bytes
+send    : send counter: 22260  size: 1571 bytes
+received: recv counter: 23851  size: 20 bytes
+send    : send counter: 23831  size: 20 bytes
+received: recv counter: 23871  size: 20 bytes
+send    : send counter: 23851  size: 20 bytes
+^C
+!Terminated by ctr-c.
+
+Closing network emulation.
+
+--- Statistics ---
+Total time    : 2.042704 sec
+      received: 17 packets with 23891 bytes
+      send    : 16 packets with 23871 bytes
+Rejected from invalid host: 0 packets with 0 bytes
+
+Dropped by congestion: 8 packets) with 15711 bytes
+
+Errors emulated:
+    Random packet loss: 1 packets = 6.2% of packets
+    Bit error         : 0 bits    = 0 (1/100000 per bit)
+    Out of order      : 0 packets = 0%
+
+Transfer speed
+    receive: min 0.277 kb/s   max 409387.264 kb/s
+    send   : average 93.488 kb/s
+
+jacklyntsai@DESKTOP-9I165B1:/mnt/c$ ./newudpl -p 2222:3333 -i 127.0.0.1:1234 -o 127.0.0.1:4444 -vv -L 15
+
+Network emulator with UDP link
+ Copyright (c) 2021 by Columbia University; all rights reserved
+
+Link established:
+  localhost(127.0.0.1)/1234 ->
+          DESKTOP-9I165B1(127.0.1.1)/2222
+  /3333 ->
+          localhost(127.0.0.1)/4444
+
+emulating speed  : 1000 kb/s
+delay            : 0.000000 sec
+Ethernet         : 10 Mb/s
+Queue buffersize : 8192 bytes
+
+error rate
+    Random packet loss: 15%
+    Bit error         : 0 (1/100000 per bit)
+    Out of order      : 0%
+    Jitter            : 0% of delay
+
+received: recv counter: 0  size: 20 bytes
+  this is the first packet:
+send    : send counter: 0  size: 20 bytes
+received: recv counter: 20  size: 20 bytes
+send    : send counter: 20  size: 20 bytes
+received: recv counter: 40  size: 2020 bytes
+received: recv counter: 2060  size: 2020 bytes
+received: recv counter: 4080  size: 2020 bytes
+received: recv counter: 6100  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 1571 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 1571 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+!Congestion:
+  discarded packet: recv counter: 8120  size: 2020 bytes
+send    : send counter: 40  size: 2020 bytes
+send    : send counter: 2060  size: 2020 bytes
+send    : send counter: 4080  size: 2020 bytes
+send    : send counter: 6100  size: 2020 bytes
+received: recv counter: 8120  size: 2020 bytes
+send    : send counter: 8120  size: 2020 bytes
+received: recv counter: 10140  size: 2020 bytes
+send    : send counter: 10140  size: 2020 bytes
+received: recv counter: 12160  size: 2020 bytes
+send    : send counter: 12160  size: 2020 bytes
+received: recv counter: 14180  size: 2020 bytes
+send    : send counter: 14180  size: 2020 bytes
+received: recv counter: 16200  size: 2020 bytes
+Packet loss:
+  discarded packet: send counter: 16200  size: 2020 bytes
+received: recv counter: 18220  size: 2020 bytes
+send    : send counter: 16200  size: 2020 bytes
+received: recv counter: 20240  size: 2020 bytes
+send    : send counter: 18220  size: 2020 bytes
+received: recv counter: 22260  size: 2020 bytes
+Packet loss:
+  discarded packet: send counter: 20240  size: 2020 bytes
+received: recv counter: 24280  size: 2020 bytes
+send    : send counter: 20240  size: 2020 bytes
+received: recv counter: 26300  size: 1571 bytes
+send    : send counter: 22260  size: 1571 bytes
+received: recv counter: 27871  size: 20 bytes
+send    : send counter: 23831  size: 20 bytes
+received: recv counter: 27891  size: 20 bytes
+send    : send counter: 23851  size: 20 bytes

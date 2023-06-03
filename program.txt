@@ -1,0 +1,74 @@
+-- PROGRAM DESIGN & HOW IT WORKS--
+see README.txt for brief description of the functions I built in tcpserver.py and tcpclient.py
+pseudo-code description:
+
+# tcpclient.py
+performs error checking on command line arguments
+read file
+create UDP socket
+create separate thread that receives incoming UDP messages
+// 3 way handshake
+send SYN request to newudpl
+if retried 7 times and still not received SYNACK:
+    log error message that TCP connection failed
+    client program terminated
+when receive server's SYN-ACK:
+    send ACK to server's SYN-ACK
+
+// sending file information 
+for every chunk in file: // each chunk I set to 2000 bytes
+    create TCP segment for chunk with client_seqnum
+    if timer currently not running: //tracked with existing_timers list that keeps track of running timer threads
+        start timer thread
+    pass segment to newudpl
+    client_seqnum += len(chunk)
+
+wait until ACK for last file chunk is received by client
+send FIN request to newudpl
+if retried 7 times and still not received FINACK:
+    log error message and terminate client program
+when receive server's FINACK:
+    send ACK to server's FINACK
+    timed wait 
+    terminate client program
+
+# tcpserver.py
+performs error checking on command line arguments
+set up file to write
+create UDP socket
+while True:
+    receive UDP messages from newudpl
+    unpack TCP header
+    checksum test
+    if SYN request:
+        send SYN-ack
+    else if SYN ACK:
+        server TCP connection established
+    else:
+        if TCP connection not established and I receive file packet from client:
+            discard packet
+            send reset request to newudpl telling client to restart its program
+        
+        elif filepacket from newudpl:
+            if arrival higher than expect seq #:
+                gap detected
+                immediately send duplicate ACK inidicating seq # of next expected byte
+            elif arrival of segment that partially or completely fills gap:
+                if segment starts at lower end of gap:
+                    write to file
+                    send ack
+                    update lower end of gap
+            elif arrival of in-order segment:
+                write to file
+                immediately send ack
+        
+        elif FIN request from newudpl:
+            send FINACK to newudpl
+            terminate server program
+
+
+
+-- DESIGN TRADEOFFS CONSIDERED AND MAKE -- 
+tcpserver.py:
+1. As it is not required according to ED, I did not implment delayed ack for arrival of in-order segment.
+I sent an immediate ACK for every in-order segment received.
