@@ -33,7 +33,7 @@ Note: writing_filename and reading_filename must be of the same file type (eg: b
 The program tester should make sure that the port numbers used by newudpl, tcpclient, and tcpserver are not occupied.
 2. if writing_filename and reading_filename are called the same the program will not work accordingly so make sure to name them different.
 
-# FEATURES: functions implemented in tcpserver.py and tcpclient.py
+## FEATURES: functions implemented in tcpserver.py and tcpclient.py
 1. checkPortNum: according to Programming Assignment 1's port num validation, check if port num is an int and within range
 2. checkIPAddress: checks if IP address is valid
 3. checkInt: checks if windowsize is an integer
